@@ -5,6 +5,8 @@ import java.util.Random;
 
 public final class Stock implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private final String name;
 
 	public Stock(String name) {
@@ -14,10 +16,12 @@ public final class Stock implements Serializable {
 	public String getName() {
 		return name;
 	}
+
 	public Double getPrice() {
 		return (new Random()).nextDouble();
 
 	}
+
 	public Double getChange() {
 		return (new Random()).nextDouble();
 	}
