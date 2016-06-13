@@ -10,7 +10,7 @@
  */
 angular
   .module('cloudunitDemoApp', [
-      'ngRoute', 'ngMaterial', 'ngStomp'
+      'ngRoute', 'ngMaterial', 'ngStomp', 'data-table'
   ])
   .config(function ($routeProvider) {
 	$routeProvider.when('/', {
