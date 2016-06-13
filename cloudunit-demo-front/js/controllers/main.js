@@ -18,21 +18,21 @@ angular.module('cloudunitDemoApp').controller('mainCtrl', function($scope, $stom
    		{
 			name: "3m Co",
 			price: 0.76,
-			change: 0.1,
+			changes: 0.1,
 			shares: 100,
 			value: 19
 		},
    		{
 			name: "Microsoft",
 			price: 0.76,
-			change: 0.1,
+			changes: 0.1,
 			shares: 100,
 			value: 19
 		},
    		{
 			name: "IBM",
 			price: 0.76,
-			change: 0.1,
+			changes: 0.1,
 			shares: 100,
 			value: 19
 		},	
