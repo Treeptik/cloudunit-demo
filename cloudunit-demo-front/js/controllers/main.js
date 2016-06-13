@@ -7,11 +7,13 @@
  * # MainCtrl
  * Controller of the cloudunitDemoApp
  */
-angular.module('cloudunitDemoApp').controller('mainCtrl', function($scope, $stomp, $log, $mdToast) {
+angular.module('cloudunitDemoApp').controller('mainCtrl', function($scope, $stomp, $log, CONFIG) {
 			
 	var self = this;
-	console.log("mainCtrl initialize ok");
-			
+	$scope.sumValue = 0;
+	$scope.sumShares = 0;
+	
+		
 	$scope.compagnies = [
    		{
 			name: "3m Co",
@@ -36,48 +38,27 @@ angular.module('cloudunitDemoApp').controller('mainCtrl', function($scope, $stom
 		},	
 	]	
 	
-
-  
-   $scope.options = {
-    rowHeight: 50,
-    headerHeight: 50,
-    footerHeight: false,
-    scrollbarV: false
-  };
-
-  $scope.data = [
-	{
-		name: "5m Co",
-		price: 0.76,
-		change: 0.1,
-		shares: 100,
-		value: 10
-	},
-	{
-		name: "3m Co",
-		price: 0.6,
-		change: 0.1,
-		shares: 100,
-		value: 10
-	},
-  ];
-			
+	
 	$stomp.setDebug(function (args) {
 		$log.debug(args)
 	})
-	var connectHeaders = {"login":"superadmin","passcode":"12345678"};
-	$stomp
-	.connect('192.168./my-socket', connectHeaders)
 
-	// frame = CONNECTED headers
+	$stomp
+	.connect(CONFIG.baseUrl + '/my-socket')
+
 	.then(function (frame) {
-		var subscription = $stomp.subscribe('/dest', function (payload, headers, res) {
+		var subscription = $stomp.subscribe('/topic/results', function (payload, headers, res) {
 			console.log("Message reçu!");
-			console.log(res);
+			$scope.compagnies = res.body;
+			//console.log($scope.compagnies);
+			/*
+			$.each($scope.compagnies,function(e) {
+				$scope.sumValue += e.value;
+			});*/
 			
-			$scope.payload = payload
-		}, {
-		'headers': 'are awesome'
+			console.log($scope.sumValue);
+			
+			$scope.$apply();
 		})
 
 		// Unsubscribe
@@ -90,11 +71,11 @@ angular.module('cloudunitDemoApp').controller('mainCtrl', function($scope, $stom
 		priority: 9,
 		custom: 42 // Custom Headers
 		})*/
-
+/*
 		// Disconnect
 		$stomp.disconnect(function () {
 			$log.info('disconnected')
-		})
+		})*/
 	})
 	
 });

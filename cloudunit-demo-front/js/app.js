@@ -12,6 +12,10 @@ angular
   .module('cloudunitDemoApp', [
       'ngRoute', 'ngMaterial', 'ngStomp', 'ngMdIcons', 'data-table'
   ])
+	.constant('CONFIG', {
+     baseUrl: 'http://127.0.0.1:8080'
+
+  })
   .config(function ($routeProvider, $mdThemingProvider) {
 		$mdThemingProvider.theme('default')
     	.primaryPalette('light-blue')
