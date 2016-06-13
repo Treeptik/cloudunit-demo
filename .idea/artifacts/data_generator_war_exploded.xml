@@ -10,6 +10,7 @@
           <element id="archive" name="base-0.1.jar">
             <element id="module-output" name="base" />
           </element>
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:1.0.0.Final" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.1.5" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.1.5" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.16" />
@@ -25,6 +26,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.0.RELEASE" />
+          <element id="library" level="project" name="Maven: javax.jms:javax.jms-api:2.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">
