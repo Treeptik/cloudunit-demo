@@ -16,18 +16,12 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-
-		System.setProperty("spring.profiles.active", "main");
-
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		rootContext.register(ApplicationConfiguration.class, WebConfiguration.class);
-		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher",
-				new DispatcherServlet(rootContext));
+		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(rootContext));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
-
 		dispatcher.setAsyncSupported(true);
-
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 	}
 

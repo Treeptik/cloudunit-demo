@@ -2,8 +2,10 @@ package fr.treeptik.rest.controller;
 
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +15,13 @@ import fr.treeptik.base.model.Company;
 @Controller
 public class WebSocketController {
 
-	@MessageMapping("/add")
-	@SendTo("/topic/showResult")
-	public Company addNum() throws Exception {
-		Thread.sleep(2000);
+	@Autowired
+	private SimpMessagingTemplate simpMessagingTemplate;
+
+	public void refresh() {
 		Company company = new Company(1L, "IBM", new Random().nextDouble(), new Random().nextDouble(),
 				new Random().nextInt(), new Random().nextDouble());
-		return company;
+		simpMessagingTemplate.convertAndSend("/topic/results", company);
 	}
 
 	@RequestMapping("/")
@@ -29,8 +31,7 @@ public class WebSocketController {
 
 	@Scheduled(fixedDelay = 2000)
 	public void schedule() throws Exception {
-		System.out.println("appel schedule");
-		addNum();
+		refresh();
 	}
 
 }

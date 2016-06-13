@@ -12,14 +12,14 @@
 		document.getElementById('calResponse').innerHTML = '';
 	}
 	function connect() {
-		var socket = new SockJS('/rest-api/add');
+		var socket = new SockJS('/my-socket');
 		stompClient = Stomp.over(socket);
 		stompClient.connect({}, function(frame) {
 			setConnected(true);
 			console.log('Connected: ' + frame);
-			stompClient.subscribe('/topic/showResult', function(calResult) {
-				console.log(JSON.parse(calResult.body).result)
-				showResult(JSON.parse(calResult.body).result);
+			stompClient.subscribe('/topic/results', function(calResult) {
+				console.log(JSON.parse(calResult.body))
+				showResult(JSON.parse(calResult.body));
 			});
 		});
 	}
@@ -33,7 +33,7 @@
 		var response = document.getElementById('calResponse');
 		var p = document.createElement('p');
 		p.style.wordWrap = 'break-word';
-		p.appendChild(document.createTextNode(message));
+		p.appendChild(document.createTextNode(message.name + message.price));
 		response.appendChild(p);
 	}
 </script>
