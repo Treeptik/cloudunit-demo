@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.treeptik.base.model.RandomStock;
 import fr.treeptik.base.model.Stock;
+import fr.treeptik.rest.service.StockMessageService;
 
 @Controller
 public class WebSocketController {
 
 	@Autowired
 	private SimpMessagingTemplate simpMessagingTemplate;
+
+	@Autowired
+	private StockMessageService stockMessageService;
 
 	public void refresh() {
 		Stock stock = RandomStock.aleajactaest();

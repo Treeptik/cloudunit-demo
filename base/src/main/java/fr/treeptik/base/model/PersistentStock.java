@@ -2,17 +2,25 @@ package fr.treeptik.base.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class PersistentStock implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String name;
 
 	private Double price;
 
-	private Double change;
+	private Double changes;
 
 	private Double value;
 
@@ -42,12 +50,12 @@ public class PersistentStock implements Serializable {
 		this.price = price;
 	}
 
-	public Double getChange() {
-		return change;
+	public Double getChanges() {
+		return changes;
 	}
 
-	public void setChange(Double change) {
-		this.change = change;
+	public void setChanges(Double changes) {
+		this.changes = changes;
 	}
 
 	public Double getValue() {

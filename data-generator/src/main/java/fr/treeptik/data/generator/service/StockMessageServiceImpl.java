@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import fr.treeptik.base.model.PersistentStock;
 
 @Service
-public class CompanyMessageServiceImpl implements CompanyMessageService {
+public class StockMessageServiceImpl implements StockMessageService {
 
-	private Logger logger = LoggerFactory.getLogger(CompanyMessageService.class);
+	private Logger logger = LoggerFactory.getLogger(StockMessageService.class);
 
 	public String[] companiesNames = { "IBM", "Oracle", "Docker", "Treeptik", "Xebia" };
 
@@ -24,7 +24,7 @@ public class CompanyMessageServiceImpl implements CompanyMessageService {
 	@Override
 	public PersistentStock generateRandomCompany() {
 		PersistentStock stock = new PersistentStock();
-		stock.setChange(new Random().nextDouble());
+		stock.setChanges(new Random().nextDouble());
 		stock.setName(companiesNames[new Random().nextInt(5)]);
 		stock.setPrice(new Random().nextDouble());
 		stock.setValue(new Random().nextDouble());
@@ -33,7 +33,7 @@ public class CompanyMessageServiceImpl implements CompanyMessageService {
 	}
 
 	@Override
-	@Scheduled(fixedDelay = 3000)
+	@Scheduled(fixedDelay = 800)
 	public void sendMessage() {
 		logger.debug("Send new message");
 		jmsTemplate.convertAndSend(generateRandomCompany());
