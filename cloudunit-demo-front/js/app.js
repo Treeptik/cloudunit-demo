@@ -10,13 +10,17 @@
  */
 angular
   .module('cloudunitDemoApp', [
-      'ngRoute', 'ngMaterial', 'ngStomp', 'data-table'
+      'ngRoute', 'ngMaterial', 'ngStomp', 'ngMdIcons', 'data-table'
   ])
-  .config(function ($routeProvider) {
-	$routeProvider.when('/', {
-		templateUrl : 'views/main.html',
-		controller : 'mainCtrl',
-		controllerAs: 'controller'
+  .config(function ($routeProvider, $mdThemingProvider) {
+		$mdThemingProvider.theme('default')
+    	.primaryPalette('light-blue')
+    	.accentPalette('light-blue');
+		
+		$routeProvider.when('/', {
+			templateUrl : 'views/main.html',
+			controller : 'mainCtrl',
+			controllerAs: 'controller'
 	}).otherwise('/');
 
 	//$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

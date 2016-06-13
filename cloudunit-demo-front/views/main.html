@@ -38,12 +38,40 @@
           </div>
         </md-toolbar>
         
+       <table>
+        <thead>
+          <tr>
+              <th data-field="id">Name</th>
+              <th data-field="name">Price</th>
+              <th data-field="price">Change</th>
+                <th data-field="name">Shares</th>
+              <th data-field="price">Value</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="compagny in compagnies">
+            <td>{{compagny.name}}</td>
+            <td>{{compagny.price}}</td>
+            <td>{{compagny.change}} 
+              <ng-md-icon ng-if="compagny.change > 0" icon="trending_up" style="fill:green" size="24"></ng-md-icon>
+              <ng-md-icon ng-if="compagny.change < 0" icon="trending_down" style="fill:red" size="24"></ng-md-icon>
+            </td>
+            <td>{{compagny.shares}}</td>
+            <td>{{compagny.value}} </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p>
+        Total share: 3000
+        Total value:	426549.90€	 
+      </p>
+      
+      {{ payload }}
+            
         
-        
-        
-        
-        
-        
+      <!--  
       <dtable options="options" rows="data" class="material dt">
         <column name="name" width="100"></column>
         <column name="price" ></column>
@@ -51,7 +79,7 @@
         <column name="shares" ></column>
         <column name="value" ></column>
       
-      </dtable>    
+      </dtable>    -->
         
 <!--
         
