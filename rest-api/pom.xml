@@ -8,8 +8,14 @@
 	</parent>
 	<artifactId>rest-api</artifactId>
 	<packaging>war</packaging>
-	
-	
-	
-	
+
+
+	<dependencies>
+		<dependency>
+			<groupId>fr.treeptik</groupId>
+			<artifactId>base</artifactId>
+			<version>0.1</version>
+		</dependency>
+	</dependencies>
+
 </project>

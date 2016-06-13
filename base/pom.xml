@@ -6,16 +6,6 @@
 		<artifactId>cloudunit-demo</artifactId>
 		<version>0.1</version>
 	</parent>
-	<artifactId>data-generator</artifactId>
-	<packaging>war</packaging>
-
-	<dependencies>
-		<dependency>
-			<groupId>fr.treeptik</groupId>
-			<artifactId>base</artifactId>
-			<version>0.1</version>
-		</dependency>
-	</dependencies>
-
-
+	<artifactId>base</artifactId>
+	<packaging>jar</packaging>
 </project>

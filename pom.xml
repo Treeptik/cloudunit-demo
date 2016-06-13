@@ -5,17 +5,57 @@
 	<artifactId>cloudunit-demo</artifactId>
 	<version>0.1</version>
 	<packaging>pom</packaging>
-
-	<module>rest-api</module>
-	<module>data-generator</module>
-
+	<modules>
+		<module>rest-api</module>
+		<module>data-generator</module>
+		<module>base</module>
+	</modules>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<spring.version>4.2.5.RELEASE</spring.version>
+		<spring.version>4.3.0.RELEASE</spring.version>
+		<junit.version>4.12</junit.version>
+		<logback.version>1.1.5</logback.version>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Tests -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
