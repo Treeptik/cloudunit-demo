@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>fr.treeptik</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>cloudunit-demo</artifactId>
 		<version>0.1</version>
 	</parent>
 	<artifactId>data-generator</artifactId>
