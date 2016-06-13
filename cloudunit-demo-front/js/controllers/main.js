@@ -7,67 +7,65 @@
  * # MainCtrl
  * Controller of the cloudunitDemoApp
  */
-angular.module('cloudunitDemoApp').controller('mainCtrl', function($scope) {
+angular.module('cloudunitDemoApp').controller('mainCtrl', function($scope, $stomp, $log) {
 			
-			var self = this;
-			console.log("ok");
-		/*	self.tab = function(route) {
-				return $route.current && route === $route.current.controller;
-			};
-
-			var authenticate = function(credentials, callback) {
-
-				var headers = credentials ? {
-					authorization : "Basic "
-							+ btoa(credentials.username + ":"
-									+ credentials.password)
-				} : {};
-
-				$http.get('user', {
-					headers : headers
-				}).then(function(response) {
-					if (response.data.name) {
-						$rootScope.authenticated = true;
-					} else {
-						$rootScope.authenticated = false;
-					}
-					callback && callback($rootScope.authenticated);
-				}, function() {
-					$rootScope.authenticated = false;
-					callback && callback(false);
-				});
-
-			}
-
-			authenticate();
-
-			self.credentials = {};
-			self.login = function() {
-				authenticate(self.credentials, function(authenticated) {
-					if (authenticated) {
-						console.log("Login succeeded")
-						$location.path("/");
-						self.error = false;
-						$rootScope.authenticated = true;
-					} else {
-						console.log("Login failed")
-						$location.path("/login");
-						self.error = true;
-						$rootScope.authenticated = false;
-					}
-				})
-			};
-
-			self.logout = function() {
-				$http.post('logout', {}).finally(function() {
-					$rootScope.authenticated = false;
-					$location.path("/");
-				});
-			}
-
-		}).controller('home', function($http) {
 	var self = this;
-	$http.get('/resource/').then(function(response) {
-		self.greeting = response.data;
-	})*/
+	console.log("mainCtrl initialize ok");
+			
+	$scope.compagnies = [
+   		{
+			name: "3m Co",
+			price: 0.76,
+			change: 0.1,
+			shares: 100,
+			value: 19
+		},
+   		{
+			name: "Microsoft",
+			price: 0.76,
+			change: 0.1,
+			shares: 100,
+			value: 19
+		},
+   		{
+			name: "IBM",
+			price: 0.76,
+			change: 0.1,
+			shares: 100,
+			value: 19
+		},		
+	]		
+			
+	$stomp.setDebug(function (args) {
+		$log.debug(args)
+	})
+	var connectHeaders = {"login":"superadmin","passcode":"12345678"};
+	$stomp
+	.connect('/endpoint', connectHeaders)
+
+	// frame = CONNECTED headers
+	.then(function (frame) {
+		var subscription = $stomp.subscribe('/dest', function (payload, headers, res) {
+		$scope.payload = payload
+		}, {
+		'headers': 'are awesome'
+		})
+
+		// Unsubscribe
+		subscription.unsubscribe()
+
+		// Send message
+		$stomp.send('/dest', {
+		message: 'body'
+		}, {
+		priority: 9,
+		custom: 42 // Custom Headers
+		})
+
+		// Disconnect
+		$stomp.disconnect(function () {
+		$log.info('disconnected')
+		})
+	})
+	
 });
