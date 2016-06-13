@@ -18,6 +18,18 @@ public class Company implements Serializable {
 
 	private Double value;
 
+	public Company() {
+	}
+
+	public Company(Long id, String name, Double price, Double change, Integer share, Double value) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.change = change;
+		this.share = share;
+		this.value = value;
+	}
+
 	public Long getId() {
 		return id;
 	}
