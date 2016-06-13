@@ -1,0 +1,31 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>Stock Exchange</span>
+  </div>
+</md-toolbar>
+
+<md-table-container>
+  <table md-table md-row-select>
+    <thead>
+      <tr md-row>
+        <th md-column md-order-by="nameToLower"><span>Compagnies</span></th>
+        <th md-column md-numeric ><span>Prices</span></th>
+        <th md-column md-numeric>Changes</th>
+        <th md-column md-numeric>Shares</th>
+        <th md-column md-numeric>Values</th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row md-auto-select ng-repeat="compagny in compagnies">
+        <td md-cell>{{compagny.name}}</td>
+        <td md-cell>{{compagny.price}}</td>
+        <td md-cell>{{compagny.change}}</td>
+        <td md-cell>{{compagny.shares}}</td>
+        <td md-cell>{{compagny.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+<!--
+<md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
+-->
