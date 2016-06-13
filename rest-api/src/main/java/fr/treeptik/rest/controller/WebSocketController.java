@@ -2,15 +2,14 @@ package fr.treeptik.rest.controller;
 
 import java.util.Random;
 
+import fr.treeptik.base.model.RandomStock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import fr.treeptik.base.model.Company;
+import fr.treeptik.base.model.Stock;
 
 @Controller
 public class WebSocketController {
@@ -19,9 +18,8 @@ public class WebSocketController {
 	private SimpMessagingTemplate simpMessagingTemplate;
 
 	public void refresh() {
-		Company company = new Company(1L, "IBM", new Random().nextDouble(), new Random().nextDouble(),
-				new Random().nextInt(), new Random().nextDouble());
-		simpMessagingTemplate.convertAndSend("/topic/results", company);
+		Stock stock = RandomStock.aleajactaest();
+		simpMessagingTemplate.convertAndSend("/topic/results", stock);
 	}
 
 	@RequestMapping("/")
