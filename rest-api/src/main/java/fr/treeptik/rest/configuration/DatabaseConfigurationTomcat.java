@@ -1,5 +1,10 @@
 package fr.treeptik.rest.configuration;
 
+import java.util.Properties;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.jboss.logging.Logger;
 import org.springframework.context.annotation.Bean;
@@ -15,12 +20,6 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import javax.annotation.Resource;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.SharedCacheMode;
-import javax.sql.DataSource;
-import java.util.Properties;
 
 @Profile("tomcat")
 @Configuration

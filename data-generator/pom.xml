@@ -20,6 +20,11 @@
 			<artifactId>jboss-servlet-api_3.1_spec</artifactId>
 			<version>1.0.0.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jbossall-client</artifactId>
+			<version>4.2.2.GA</version>
+		</dependency>
 	</dependencies>
 
 
