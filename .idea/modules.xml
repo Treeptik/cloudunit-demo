@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/cloudunit-demo.iml" filepath="$PROJECT_DIR$/.idea/cloudunit-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/data-generator/data-generator.iml" filepath="$PROJECT_DIR$/data-generator/data-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/front/front.iml" filepath="$PROJECT_DIR$/front/front.iml" />
       <module fileurl="file://$PROJECT_DIR$/rest-api/rest-api.iml" filepath="$PROJECT_DIR$/rest-api/rest-api.iml" />
     </modules>
   </component>

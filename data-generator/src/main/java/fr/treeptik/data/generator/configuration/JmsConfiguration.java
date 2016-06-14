@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
+import javax.naming.Context;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,14 +27,23 @@ public class JmsConfiguration {
 	public JndiTemplate jndiTemplate() {
 		JndiTemplate jndiTemplate = new JndiTemplate();
 		Properties environment = new Properties();
-		environment.put("endpoint.name", "client-endpoint");
+
+        environment.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
+        environment.put(Context.PROVIDER_URL,"http-remoting://172.17.0.36:8080");
+        environment.put(Context.SECURITY_PRINCIPAL, "johndoe");
+        environment.put(Context.SECURITY_CREDENTIALS, "abc2015");
 		environment.put("remote.connectionprovider.create.options.org.xnio.Options.SSL_ENABLED", false);
-		environment.put("remote.connections", "default");
-		environment.put("remote.connection.default.host", "localhost");
-		environment.put("remote.connection.default.port", "8080");
 		environment.put("remote.connection.default.connect.options.org.xnio.Options.SASL_POLICY_NOANONYMOUS", false);
-		environment.put("remote.connection.default.username", "admin");
-		environment.put("remote.connection.default.password", "admin");
+		environment.put("jboss.naming.client.ejb.context", true);
+
+        /*
+		environment.put("endpoint.name", "client-endpoint");
+		environment.put("remote.connections", "default");
+		environment.put("remote.connection.default.host", "172.17.0.36");
+		environment.put("remote.connection.default.port", "8080");
+		environment.put("remote.connection.default.username", "johndoe");
+		environment.put("remote.connection.default.password", "abc2015");
+		*/
 		jndiTemplate.setEnvironment(environment);
 		return jndiTemplate;
 	}
@@ -52,7 +62,7 @@ public class JmsConfiguration {
 		JndiObjectFactoryBean factoryBean = new JndiObjectFactoryBean();
 		factoryBean.setJndiTemplate(jndiTemplate);
 		factoryBean.setResourceRef(false);
-		factoryBean.setJndiName("java:/ConnectionFactory");
+		factoryBean.setJndiName("java:jboss/exported/jms/RemoteConnectionFactory");
 		return factoryBean;
 	}
 
