@@ -2,6 +2,7 @@ package fr.treeptik.rest.controller;
 
 import fr.treeptik.base.model.PersistentStock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;

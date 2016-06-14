@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/rest-api/pom.xml" />
         <option value="$PROJECT_DIR$/data-generator/pom.xml" />
         <option value="$PROJECT_DIR$/base/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>

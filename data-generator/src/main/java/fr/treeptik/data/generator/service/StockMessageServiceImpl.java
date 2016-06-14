@@ -27,7 +27,7 @@ public class StockMessageServiceImpl implements StockMessageService {
 	public PersistentStock generateRandomCompany() {
 		PersistentStock stock = new PersistentStock();
 		stock.setChanges(new Random().nextDouble());
-		stock.setName(companiesNames[new Random().nextInt(5)]);
+		stock.setName(companiesNames[new Random().nextInt(15)]);
 		stock.setPrice(new Random().nextDouble());
 		stock.setValue(new Random().nextDouble());
 		stock.setShare(new Random().nextInt());

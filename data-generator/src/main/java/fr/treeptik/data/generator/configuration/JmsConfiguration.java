@@ -6,6 +6,7 @@ import javax.jms.Queue;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jms.core.JmsTemplate;
 
 @Configuration

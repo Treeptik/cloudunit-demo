@@ -6,10 +6,12 @@ import javax.jms.Queue;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
 import fr.treeptik.rest.service.StockMessageService;
 
+@Profile("jboss")
 @Configuration
 public class JmsConfiguration {
 

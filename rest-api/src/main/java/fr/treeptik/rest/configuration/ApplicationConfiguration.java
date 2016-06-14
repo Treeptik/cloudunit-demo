@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableScheduling
-@Import(value = { DatabaseConfiguration.class, JmsConfiguration.class })
+@Import(value = { DatabaseConfigurationJBoss.class, JmsConfiguration.class, DatabaseConfigurationTomcat.class })
 @ComponentScan(basePackages = { "fr.treeptik.rest.service", "fr.treeptik.rest.dao" })
 @EnableTransactionManagement
 public class ApplicationConfiguration {
