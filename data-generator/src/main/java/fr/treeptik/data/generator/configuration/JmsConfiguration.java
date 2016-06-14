@@ -11,7 +11,7 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class JmsConfiguration {
 
-	@Resource(mappedName = "java:/jms/queue/CompanyQueue")
+	@Resource(mappedName = "java:/jms/queue/StockQueue")
 	private Queue queue;
 
 	@Resource(mappedName = "java:/ConnectionFactory")

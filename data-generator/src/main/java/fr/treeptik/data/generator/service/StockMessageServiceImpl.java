@@ -16,7 +16,9 @@ public class StockMessageServiceImpl implements StockMessageService {
 
 	private Logger logger = LoggerFactory.getLogger(StockMessageService.class);
 
-	public String[] companiesNames = { "IBM", "Oracle", "Docker", "Treeptik", "Xebia" };
+	public String[] companiesNames = { "IBM", "Oracle", "Docker", "Treeptik", "Xebia",
+										"MacDo", "CocaCola", "Apple", "Intel", "VmWare",
+										"Hooli", "PipePiper", "AnaoTech", "Rothschild", "SG",};
 
 	@Autowired
 	private JmsTemplate jmsTemplate;
@@ -33,7 +35,7 @@ public class StockMessageServiceImpl implements StockMessageService {
 	}
 
 	@Override
-	@Scheduled(fixedDelay = 800)
+	@Scheduled(fixedDelay = 500)
 	public void sendMessage() {
 		logger.debug("Send new message");
 		jmsTemplate.convertAndSend(generateRandomCompany());

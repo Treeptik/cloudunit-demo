@@ -1,5 +1,6 @@
 package fr.treeptik.rest.controller;
 
+import fr.treeptik.base.model.PersistentStock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import fr.treeptik.base.model.RandomStock;
 import fr.treeptik.base.model.Stock;
 import fr.treeptik.rest.service.StockMessageService;
+
+import java.util.List;
 
 @Controller
 public class WebSocketController {
@@ -20,8 +23,8 @@ public class WebSocketController {
 	private StockMessageService stockMessageService;
 
 	public void refresh() {
-		Stock stock = RandomStock.aleajactaest();
-		simpMessagingTemplate.convertAndSend("/topic/results", stock);
+		List<PersistentStock> persistentStockList = stockMessageService.list();
+		simpMessagingTemplate.convertAndSend("/topic/results", persistentStockList);
 	}
 
 	@RequestMapping("/")
