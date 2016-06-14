@@ -1,32 +1,3 @@
-<!--<md-toolbar class="md-table-toolbar md-default">
-  <div class="md-toolbar-tools">
-    <span>Stock Exchange</span>
-  </div>
-</md-toolbar>
-
-<md-table-container>
-  <table md-table md-row-select>
-    <thead>
-      <tr md-row>
-        <th md-column md-order-by="nameToLower"><span>Compagnies</span></th>
-        <th md-column md-numeric ><span>Prices</span></th>
-        <th md-column md-numeric>Changes</th>
-        <th md-column md-numeric>Shares</th>
-        <th md-column md-numeric>Values</th>
-      </tr>
-    </thead>
-    <tbody md-body>
-      <tr md-row md-auto-select ng-repeat="compagny in compagnies">
-        <td md-cell>{{compagny.name}}</td>
-        <td md-cell>{{compagny.price}}</td>
-        <td md-cell>{{compagny.change}}</td>
-        <td md-cell>{{compagny.shares}}</td>
-        <td md-cell>{{compagny.value}}</td>
-      </tr>
-    </tbody>
-  </table>
-</md-table-container>
--->
 
 
  <md-content layout="column" flex >
@@ -41,7 +12,7 @@
        <table>
         <thead>
           <tr>
-              <th data-field="id">Name</th>
+              <th data-field="id">Names</th>
               <th data-field="name">Price</th>
               <th data-field="price">Change</th>
                 <th data-field="name">Shares</th>
@@ -50,27 +21,53 @@
         </thead>
 
         <tbody>
-          <tr ng-repeat="compagny in compagnies">
+          <tr ng-repeat="compagny in compagnies | orderBy: 'name' track by $index" >
             <td>{{compagny.name}}</td>
-            <td>{{compagny.price}}</td>
-            <td>{{compagny.change}} 
-              <ng-md-icon ng-if="compagny.change > 0" icon="trending_up" style="fill:green" size="24"></ng-md-icon>
-              <ng-md-icon ng-if="compagny.change < 0" icon="trending_down" style="fill:red" size="24"></ng-md-icon>
+            <td>{{compagny.price | setDecimal:2}}</td>
+            <td>{{compagny.changes | setDecimal:2}} 
+              <ng-md-icon ng-if="compagny.changes > 0" icon="trending_up" style="fill:green" size="24"></ng-md-icon>
+              <ng-md-icon ng-if="compagny.changes < 0" icon="trending_down" style="fill:red" size="24"></ng-md-icon>
             </td>
-            <td>{{compagny.shares}}</td>
-            <td>{{compagny.value}} </td>
+            <td>{{compagny.share }}</td>
+            <td>{{compagny.value | setDecimal:2}} </td>
           </tr>
         </tbody>
       </table>
       
-      <p>
-        Total share: 3000
-        Total value:	426549.90€	 
-      </p>
-      
-      {{ compagnies }}
+     <!-- <p>
+        Total share: {{ sumShares }}
+        Total value: {{ sumValue }}€	 
+      </p>-->
+          <button ng-click="test()">sejkfh</button>
             
       </md-card>
-    </md-content>
+      
+      <div layout-sm="column" layout="row" layout-wrap>
+          <div flex-sm="100" flex="40">
+            <md-toolbar layout="row" layout-align="center center" class="md-table-toolbar md-default">
+                Your value
+            </md-toolbar>
+            <canvas id="line" class="chart chart-line" chart-data="data"
+                chart-labels="labels" >
+            </canvas>
+            <!--
+            <canvas id="bar" class="chart chart-bar"
+              chart-data="data" chart-labels="labels" 
+             >
+            </canvas>-->
+           </div>
+           <div flex="40" flex-sm="100"  flex-offset-sm="0" flex-offset="20">
+            <md-toolbar layout="row" layout-align="center center" class="md-table-toolbar md-default">
+                Your shares
+            </md-toolbar>
+                <canvas id="doughnut" class="chart chart-doughnut"
+                chart-data="sharesTab" chart-labels="compagniesTab">
+                </canvas> 
+           </div>
+      </div>
+ 
+</md-content>
     
-    
+
+
+

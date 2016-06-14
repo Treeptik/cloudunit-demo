@@ -10,19 +10,31 @@
  */
 angular
   .module('cloudunitDemoApp', [
-      'ngRoute', 'ngMaterial', 'ngStomp', 'ngMdIcons', 'data-table'
+      'ngRoute', 'ngMaterial', 'ngStomp', 'ngMdIcons', 'data-table', 'chart.js'
   ])
 	.constant('CONFIG', {
      baseUrl: 'http://127.0.0.1:8080'
 
   })
   .config(function ($routeProvider, $mdThemingProvider) {
-		$mdThemingProvider.theme('default')
+	/*	$mdThemingProvider.theme('default')
     	.primaryPalette('light-blue')
-    	.accentPalette('light-blue');
+    	.accentPalette('light-blue');*/
+		
+	// Extend the red theme with a few different colors
+  var customPalette = $mdThemingProvider.extendPalette('light-blue', {
+    '500': '29b6f6',
+		    'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
+
+  });
+  // Register the new color palette map with the name <code>neonRed</code>
+  $mdThemingProvider.definePalette('custom-light-blue', customPalette);
+  // Use that theme for the primary intentions
+  $mdThemingProvider.theme('default')
+    .primaryPalette('custom-light-blue')
 		
 		$routeProvider.when('/', {
-			templateUrl : 'views/main.html',
+			templateUrl : 'views/main2.html',
 			controller : 'mainCtrl',
 			controllerAs: 'controller'
 	}).otherwise('/');
