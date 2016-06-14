@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.context.annotation.Primary;
@@ -27,8 +28,7 @@ public class StockJPADAO implements StockDAO {
 
 	@Override
 	public List<PersistentStock> list() {
-		TypedQuery<PersistentStock> query = entityManager
-				.createQuery("select p from PersistentStock p order by p.id desc", PersistentStock.class);
+		Query query = entityManager.createNativeQuery("select p.* from persistentstock as p, (select max(id) as id , name from persistentstock group by name) as tempo where tempo.id = p.id", PersistentStock.class);
 		query.setMaxResults(15);
 		return query.getResultList();
 	}
