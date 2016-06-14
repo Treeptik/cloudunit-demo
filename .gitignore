@@ -2,18 +2,18 @@
 # Created by https://www.gitignore.io/api/java,bower,grunt,eclipse,webstorm,linux,intellij,netbeans,git
 
 ### Bower ###
-cloudunit-demo-front/bower_components
-cloudunit-demo-front/.bower-cache
-cloudunit-demo-front/.bower-registry
-cloudunit-demo-front/.bower-tmp
+front/bower_components
+front/.bower-cache
+front/.bower-registry
+front/.bower-tmp
 
 
 ### grunt ###
 # Grunt usually compiles files inside this directory
-cloudunit-demo-front/dist/
+front/dist/
 
 # Grunt usually preprocesses files such as coffeescript, compass... inside the .tmp directory
-cloudunit-demo-front/.tmp/
+front/.tmp/
 
 
 ### Eclipse ###
