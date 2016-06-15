@@ -5,7 +5,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/data-generator" />
-    <file type="web" url="file://$PROJECT_DIR$/front" />
+    <file type="web" url="file://$PROJECT_DIR$/front-spa" />
     <file type="web" url="file://$PROJECT_DIR$/rest-api" />
   </component>
   <component name="MavenProjectsManager">
