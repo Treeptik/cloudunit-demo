@@ -9,44 +9,38 @@
 	<artifactId>front</artifactId>
 	<packaging>war</packaging>
 
-	<dependencies>
-		<dependency>
-			<groupId>fr.treeptik</groupId>
-			<artifactId>base</artifactId>
-			<version>0.1</version>
-		</dependency>
-</dependencies>
-    <build>
+	<build>
         <plugins>
-	<plugin>
-  		 <groupId>org.codehaus.mojo</groupId>
-  		 <artifactId>exec-maven-plugin</artifactId>
- 		<executions>
-     			<execution>
-     				<phase>generate-sources</phase>
-     				<goals>
-     					<goal>exec</goal>
-     				</goals>
-     			</execution>
-   		</executions>
-   		<configuration>
-    			<executable>bower</executable>
-     			<arguments>
-      				<argument>install</argument>
-     			</arguments>
-     			<workingDirectory>${basedir}/front</workingDirectory>
-   		</configuration>
- 	</plugin>
-	 <plugin>
-	    <artifactId>maven-assembly-plugin</artifactId>
-	    <version>2.2-beta-5</version>
-	    <configuration>
-	      <descriptors>
-		<descriptor>${basedir}/front/assembly/bin.xml</descriptor>
-	      </descriptors>
-	    </configuration>
-	  </plugin>
-        </plugins>
+		<plugin>
+			 <groupId>org.codehaus.mojo</groupId>
+			 <artifactId>exec-maven-plugin</artifactId>
+			<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+			</executions>
+			<configuration>
+					<executable>bower</executable>
+					<arguments>
+						<argument>install</argument>
+					</arguments>
+			</configuration>
+		</plugin>
+			<!--
+		 <plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>2.2-beta-5</version>
+			<configuration>
+			  <descriptors>
+			<descriptor>${basedir}/front/assembly/bin.xml</descriptor>
+			  </descriptors>
+			</configuration>
+		  </plugin>
+		  -->
+		</plugins>
 
     </build>
 
