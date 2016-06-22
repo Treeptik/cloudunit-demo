@@ -34,7 +34,7 @@ angular
     .primaryPalette('custom-light-blue')
 		
 		$routeProvider.when('/', {
-			templateUrl : 'views/main2.html',
+			templateUrl : 'views/main.html',
 			controller : 'mainCtrl',
 			controllerAs: 'controller'
 	}).otherwise('/');

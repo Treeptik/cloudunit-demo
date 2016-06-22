@@ -20,11 +20,19 @@
 			<artifactId>jboss-servlet-api_3.1_spec</artifactId>
 			<version>1.0.0.Final</version>
 		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.jboss/jboss-ejb-client -->
 		<dependency>
-			<groupId>jboss</groupId>
-			<artifactId>jbossall-client</artifactId>
-			<version>4.2.2.GA</version>
+			<groupId>org.jboss</groupId>
+			<artifactId>jboss-remote-naming</artifactId>
+			<version>1.0.7.Final</version>
 		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.jboss.xnio/xnio-api -->
+		<dependency>
+			<groupId>org.jboss.xnio</groupId>
+			<artifactId>xnio-api</artifactId>
+			<version>3.3.6.Final</version>
+		</dependency>
+
 	</dependencies>
 
 

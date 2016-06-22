@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>fr.treeptik</groupId>
+		<artifactId>cloudunit-demo</artifactId>
+		<version>0.1</version>
+	</parent>
+	<artifactId>front</artifactId>
+	<packaging>war</packaging>
+
+	<build>
+        <plugins>
+		<plugin>
+			 <groupId>org.codehaus.mojo</groupId>
+			 <artifactId>exec-maven-plugin</artifactId>
+			<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+			</executions>
+			<configuration>
+					<executable>bower</executable>
+					<arguments>
+						<argument>install</argument>
+					</arguments>
+			</configuration>
+		</plugin>
+			<!--
+		 <plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>2.2-beta-5</version>
+			<configuration>
+			  <descriptors>
+			<descriptor>${basedir}/front/assembly/bin.xml</descriptor>
+			  </descriptors>
+			</configuration>
+		  </plugin>
+		  -->
+		</plugins>
+
+    </build>
+
+</project>
